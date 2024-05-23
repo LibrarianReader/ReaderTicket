@@ -17,7 +17,7 @@
             android:fontFamily="@font/alata"
             android:padding="20dp"
             android:layout_marginTop="20dp"
-            android:text="Заполните данные аккаунта "
+            android:text="Добавление новой книги"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_name_library"
+            android:id="@+id/til_title_book"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -41,151 +41,122 @@
             app:startIconDrawable="@drawable/baseline_name_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_name_library"
+                android:id="@+id/et_title_book"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alata"
-                android:hint="Имя"
+                android:hint="Название"
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_surname_library"
+            android:id="@+id/til_author_book"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_name_library"
-            app:startIconDrawable="@drawable/baseline_surname_24">
+            app:layout_constraintTop_toBottomOf="@id/til_title_book"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:startIconDrawable="@drawable/baseline_name_24">
+
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_library_surname"
+                android:id="@+id/et_author_library"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alata"
-                android:hint="Фамилия"
-                android:inputType="textCapWords" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email_library"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_surname_library"
-            app:startIconDrawable="@drawable/baseline_email_24">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_library_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/alata"
-                android:hint="Электронная почта"
+                android:hint="Автор"
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_phone_library"
+            android:id="@+id/til_description_book"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_email_library"
-            app:startIconDrawable="@drawable/baseline_phone_24">
+            app:layout_constraintTop_toBottomOf="@id/til_author_book"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:startIconDrawable="@drawable/baseline_name_24">
+
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_library_phone"
+                android:id="@+id/et_description_book"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:fontFamily="@font/alata"
-                android:hint="Телефон"
+                android:hint="Описание"
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_id_library"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:id="@+id/til_count_book"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alata"
+            app:shapeAppearanceOverlay="@style/RoundedCorners"
+            android:hint="Выберите кол-во экземпляров"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_phone_library"
-            app:startIconDrawable="@drawable/baseline_android_24">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_id_library"
+            app:layout_constraintTop_toBottomOf="@id/til_class_book">
+
+            <AutoCompleteTextView
+                android:id="@+id/et_count_book"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
                 android:fontFamily="@font/alata"
-                android:hint="ID"
-                android:inputType="textCapWords" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_library_password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_id_library"
-            app:startIconDrawable="@drawable/baseline_lock_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_library_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/alata"
-                android:hint="Пароль"
-                android:inputType="textPassword" />
+                android:inputType="none"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="2" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_library_password_repeat"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:id="@+id/til_class_book"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alata"
+            app:shapeAppearanceOverlay="@style/RoundedCorners"
+            android:hint="Выбери для какого класса"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_library_password"
-            app:startIconDrawable="@drawable/baseline_password_24">
+            app:layout_constraintTop_toBottomOf="@id/til_description_book">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_library_password_repeat"
+            <AutoCompleteTextView
+                android:id="@+id/et_class_book"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
                 android:fontFamily="@font/alata"
-                android:hint="Подтвердите пароль"
-                android:inputType="textPassword" />
+                android:inputType="none"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="8" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <Button
-            android:id="@+id/btRegLibrary"
+            android:id="@+id/btAddBook"
             android:layout_width="0dp"
             android:layout_height="62dp"
             android:layout_marginStart="10dp"
@@ -193,13 +164,13 @@
             android:layout_marginEnd="10dp"
             android:backgroundTint="#000080"
             android:fontFamily="sans-serif-medium"
-            android:text="Зарегистрироваться"
+            android:text="Добавить книгу"
             android:textSize="20sp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_library_password_repeat" />
+            app:layout_constraintTop_toBottomOf="@id/til_count_book" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

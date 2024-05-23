@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
         <item>@font/alata</item>
+        <item>@font/alfa_slab_one</item>
         <item>@font/allura</item>
         <item>@font/cherry_swash</item>
         <item>@font/herr_von_muellerhoff</item>

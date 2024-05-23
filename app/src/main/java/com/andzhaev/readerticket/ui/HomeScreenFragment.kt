@@ -52,7 +52,7 @@ class HomeScreenFragment : Fragment() {
 
     //Экран регистрации читателя
     private fun showRegistrationReaderFragment() {
-        binding.imageViewLibrary.setOnClickListener {
+        binding.imageViewReader.setOnClickListener {
             launchRegistrationReaderFragment()
         }
     }
