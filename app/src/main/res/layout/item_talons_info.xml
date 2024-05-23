@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/alata"
             android:layout_marginTop="10dp"
-            android:text="0000"
+            android:text="000000"
             android:textColor="@color/black"
             android:textSize="50sp"
             android:textStyle="bold"

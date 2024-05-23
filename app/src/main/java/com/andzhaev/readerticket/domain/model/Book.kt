@@ -2,6 +2,7 @@ package com.andzhaev.readerticket.domain.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Book(
     @SerializedName("id")
@@ -31,4 +32,4 @@ data class Book(
     @SerializedName("count")
     @Expose
     val count: Int
-)
+) : Serializable

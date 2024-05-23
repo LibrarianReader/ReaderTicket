@@ -8,12 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.andzhaev.readerticket.R
 import com.andzhaev.readerticket.data.network.ApiFactory
 import com.andzhaev.readerticket.data.network.ApiFactory.apiService
 import com.andzhaev.readerticket.databinding.FragmentListBooksBinding
+import com.andzhaev.readerticket.domain.model.Book
 import com.andzhaev.readerticket.domain.model.Genre
 import com.andzhaev.readerticket.domain.model.TextBook
 import com.andzhaev.readerticket.domain.repository.UserRepository
+import com.andzhaev.readerticket.ui.books.AddNewBookFragment
+import com.andzhaev.readerticket.ui.books.BookAdapter
 import com.andzhaev.readerticket.ui.books.TextBookAdapter
 import com.andzhaev.readerticket.ui.books.TextGenreAdapter
 
@@ -65,6 +69,7 @@ class ListBooksFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupBookRecyclerView()
         setupGenreRecyclerView()
+        showAddNewBookFragment()
     }
 
     private fun setupBookRecyclerView() {
@@ -77,6 +82,26 @@ class ListBooksFragment : Fragment() {
         val adapter = TextGenreAdapter(genreList)
         binding.rvJanrList.adapter = adapter
     }
+
+    private fun showAddNewBookFragment() {
+        binding.btAddBook.setOnClickListener {
+            launchAddNewBookFragment()
+        }
+    }
+
+    private fun launchAddNewBookFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            .replace(R.id.main_container, AddNewBookFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

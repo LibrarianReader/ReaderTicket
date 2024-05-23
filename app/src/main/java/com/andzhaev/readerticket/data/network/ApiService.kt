@@ -1,6 +1,7 @@
 package com.andzhaev.readerticket.data.network
 
 import com.andzhaev.readerticket.domain.model.Book
+import com.andzhaev.readerticket.domain.model.Talon
 import com.andzhaev.readerticket.domain.model.User
 import retrofit2.Call
 import retrofit2.Response
@@ -22,4 +23,13 @@ interface ApiService {
 
     @GET("/book/get-by-textbooks")
     suspend fun getBooksByTextBooks(@Query("textBooks") textBooks: Long): List<Book>
+
+    @GET("/book/get-by-textbooks")
+    suspend fun getBooksByGenre(@Query("genre") genre: String): List<Book>
+
+    @GET("/book/talons")
+    fun getTalons(): Call<List<Talon>>
+
+    @POST("/book/talon/save")
+    fun saveTalon(@Body talon: Talon): Call<Void>
 }

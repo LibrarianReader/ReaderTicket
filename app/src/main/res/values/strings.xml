@@ -21,4 +21,33 @@
     <string name="button_login_user">Войти</string>
     <string name="button_registration_user">Зарегистрироваться</string>
     <string name="textView_footer_splash">Заказывайте книги в мобильном приложении!</string>
+
+    <string-array name="class_books">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+
+    <string-array name="genre_books">
+        <item>Фэнтези</item>
+        <item>Приключения</item>
+        <item>Боевик</item>
+        <item>Ужасы</item>
+        <item>Драма</item>
+        <item>Комедия</item>
+        <item>Детективы</item>
+        <item>Научная фантастика</item>
+        <item>Психология</item>
+        <item>Биография</item>
+        <item>Классика</item>
+        <item>Детское</item>
+    </string-array>
 </resources>
