@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="first">#7EB3FF</color>
+    <color name="second">#76FEC5</color>
+    <color name="third">#FE9E76</color>
+    <color name="fourth">#C23A94</color>
+    <color name="fifth">#FF7272</color>
+    <color name="sixth">#FFAF50</color>
+    <color name="seventh">#F85C50</color>
+    <color name="eight">#8EAF0C</color>
+    <color name="ninth">#5199FF</color>
+    <color name="tenth">#BBC9DD</color>
+    <color name="eleventh">#FF000000</color>
 </resources>

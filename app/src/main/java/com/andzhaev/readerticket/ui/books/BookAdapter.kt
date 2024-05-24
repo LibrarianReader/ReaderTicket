@@ -18,6 +18,8 @@ class BookAdapter(private val bookList: List<Book>) :
     class BookViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.tv_title_book)
         val author: TextView = view.findViewById(R.id.tv_author_book)
+        val genre: TextView = view.findViewById(R.id.tv_genre_book)
+        val count: TextView = view.findViewById(R.id.tv_count_book)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -30,6 +32,8 @@ class BookAdapter(private val bookList: List<Book>) :
         val book = bookList[position]
         holder.title.text = book.title
         holder.author.text = book.author
+        holder.count.text = book.count.toString()
+        holder.genre.text = book.genre
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context

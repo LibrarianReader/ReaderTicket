@@ -1,5 +1,6 @@
 package com.andzhaev.readerticket.ui.books
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,7 +25,6 @@ class TextGenreAdapter(private val dataSet: List<Genre>) :
     class TextGenreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageViewGenreInfo: ImageView = view.findViewById(R.id.image_info_genre)
         val textGenre: TextView = view.findViewById(R.id.tvGenre)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextGenreViewHolder {
@@ -36,12 +36,16 @@ class TextGenreAdapter(private val dataSet: List<Genre>) :
 
     override fun onBindViewHolder(holder: TextGenreViewHolder, position: Int) {
         val textBook = dataSet[position]
-        // картинка
+        // Установка изображения для ImageView из ресурсов drawable
+        val context = holder.itemView.context
+        val imageResId = getImageResId(context, textBook.genre)
+        holder.imageViewGenreInfo.setImageResource(imageResId)
+
         holder.textGenre.text = textBook.genre
         holder.imageViewGenreInfo.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 try {
-                    Log.d("TextGenreAdapter", "Fetching books for grade: ${textBook.genre}")
+                    Log.d("TextGenreAdapter", "Fetching books for genre: ${textBook.genre}")
                     val books = ApiFactory.apiService.getBooksByGenre(textBook.genre)
                     Log.d("TextGenreAdapter", "Books received: $books")
                     // Преобразовать список книг в список строк перед передачей через Bundle
@@ -63,4 +67,22 @@ class TextGenreAdapter(private val dataSet: List<Genre>) :
     }
 
     override fun getItemCount() = dataSet.size
+
+    private fun getImageResId(context: Context, genre: String): Int {
+        return when (genre) {
+            "Фэнтези" -> R.drawable.genre_1
+            "Приключения" -> R.drawable.genre_2
+            "Боевик" -> R.drawable.genre_3
+            "Ужасы" -> R.drawable.genre_4
+            "Драма" -> R.drawable.genre_5
+            "Комедия" -> R.drawable.genre_6
+            "Детективы" -> R.drawable.genre_7
+            "Научная фантастика" -> R.drawable.genre_8
+            "Психология" -> R.drawable.genre_9
+            "Биография" -> R.drawable.genre_10
+            "Классика" -> R.drawable.genre_11
+            "Детское" -> R.drawable.genre_12
+            else -> R.drawable.genre_2
+        }
+    }
 }

@@ -18,7 +18,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvTalonNumber"
+            android:id="@+id/tvTalonNumberBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alata"
@@ -44,10 +44,10 @@
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTalonNumber" />
+            app:layout_constraintTop_toBottomOf="@id/tvTalonNumberBook" />
 
         <TextView
-            android:id="@+id/tvTalonTitleAuthor"
+            android:id="@+id/tvTalonAuthorBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -62,7 +62,20 @@
             app:layout_constraintTop_toBottomOf="@id/tvTalonTitleBook" />
 
         <TextView
-            android:id="@+id/tvTalonDay"
+            android:id="@+id/tvTalonGenreBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/alata"
+            android:text="Роман"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTalonTitleBook" />
+
+        <TextView
+            android:id="@+id/tvTalonDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -70,11 +83,11 @@
             android:text="14 дней"
             android:textColor="@color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             android:layout_marginStart="20dp"
-            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTalonTitleAuthor" />
+            app:layout_constraintTop_toBottomOf="@id/tvTalonAuthorBook" />
 
         <Button
             android:id="@+id/btDeleteTalon"
@@ -89,7 +102,7 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTalonDay"
+            app:layout_constraintTop_toBottomOf="@id/tvTalonDate"
             app:layout_constraintStart_toStartOf="parent" />
 
 

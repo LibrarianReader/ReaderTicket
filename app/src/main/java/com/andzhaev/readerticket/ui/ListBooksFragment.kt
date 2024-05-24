@@ -20,6 +20,8 @@ import com.andzhaev.readerticket.ui.books.AddNewBookFragment
 import com.andzhaev.readerticket.ui.books.BookAdapter
 import com.andzhaev.readerticket.ui.books.TextBookAdapter
 import com.andzhaev.readerticket.ui.books.TextGenreAdapter
+import com.andzhaev.readerticket.ui.favorite.FavoriteBooksFragment
+import com.andzhaev.readerticket.ui.profile.ProfileFragment
 
 
 class ListBooksFragment : Fragment() {
@@ -70,6 +72,8 @@ class ListBooksFragment : Fragment() {
         setupBookRecyclerView()
         setupGenreRecyclerView()
         showAddNewBookFragment()
+        showProfileFragment()
+        showFavoriteBooksFragment()
     }
 
     private fun setupBookRecyclerView() {
@@ -98,6 +102,44 @@ class ListBooksFragment : Fragment() {
                 R.anim.slide_out_right
             )
             .replace(R.id.main_container, AddNewBookFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun showProfileFragment() {
+        binding.btProfile.setOnClickListener {
+            launchProfileFragment()
+        }
+    }
+
+    private fun launchProfileFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            .replace(R.id.main_container, ProfileFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun showFavoriteBooksFragment() {
+        binding.btFavorite.setOnClickListener {
+            launchFavoriteBooksFragment()
+        }
+    }
+
+    private fun launchFavoriteBooksFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            .replace(R.id.main_container, FavoriteBooksFragment.newInstance())
             .addToBackStack(null)
             .commit()
     }

@@ -20,6 +20,14 @@ import kotlinx.coroutines.launch
 class TextBookAdapter(private val dataSet: List<TextBook>) :
     RecyclerView.Adapter<TextBookAdapter.TextBookViewHolder>() {
 
+    // Массив цветов для кнопок
+    private val buttonColors = arrayOf(
+        R.color.first, R.color.second, R.color.third,
+        R.color.fourth, R.color.fifth, R.color.sixth,
+        R.color.seventh, R.color.eight, R.color.ninth,
+        R.color.tenth, R.color.eleventh
+    )
+
     class TextBookViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val button: Button = view.findViewById(R.id.btTextClassBook)
     }
@@ -33,6 +41,11 @@ class TextBookAdapter(private val dataSet: List<TextBook>) :
     override fun onBindViewHolder(holder: TextBookViewHolder, position: Int) {
         val textBook = dataSet[position]
         holder.button.text = textBook.title
+
+        // Устанавливаем цвет кнопки
+        val colorResId = buttonColors[position % buttonColors.size]
+        holder.button.setBackgroundResource(colorResId)
+
         holder.button.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 try {
@@ -46,7 +59,7 @@ class TextBookAdapter(private val dataSet: List<TextBook>) :
                     val bundle = Bundle()
                     bundle.putSerializable("books", ArrayList(books))
                     fragment.arguments = bundle
-// Замена текущего фрагмента на ListGenreOrBookInfoFragment
+                    // Замена текущего фрагмента на ListGenreOrBookInfoFragment
                     (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
                         .replace(R.id.main_container, fragment)
                         .addToBackStack(null)
@@ -57,7 +70,6 @@ class TextBookAdapter(private val dataSet: List<TextBook>) :
             }
         }
     }
-
 
     override fun getItemCount() = dataSet.size
 }

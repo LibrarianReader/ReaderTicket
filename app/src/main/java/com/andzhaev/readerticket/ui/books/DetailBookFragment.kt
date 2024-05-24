@@ -1,14 +1,23 @@
 package com.andzhaev.readerticket.ui.books
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.andzhaev.readerticket.R
+import com.andzhaev.readerticket.data.network.ApiFactory
+import com.andzhaev.readerticket.data.network.ApiService
 import com.andzhaev.readerticket.databinding.FragmentDetailBookBinding
 import com.andzhaev.readerticket.databinding.FragmentProfileBinding
 import com.andzhaev.readerticket.domain.model.Book
+import com.andzhaev.readerticket.domain.model.Favorite
+import com.andzhaev.readerticket.ui.talon.CreateTalonFragment
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class DetailBookFragment : Fragment() {
@@ -16,6 +25,8 @@ class DetailBookFragment : Fragment() {
     private var _binding: FragmentDetailBookBinding? = null
     private val binding: FragmentDetailBookBinding
         get() = _binding ?: throw RuntimeException(FRAGMENT_ERROR)
+
+    private lateinit var apiService: ApiService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +38,46 @@ class DetailBookFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        apiService = ApiFactory.apiService
+
         val book = arguments?.getSerializable("book") as? Book
         if (book != null) {
-            binding.tvTitleDetailBook.text = book.title
-            binding.tvAuthorDetailBook.text = book.author
-            binding.tvDescriptionDetailBook.text = book.description
-            binding.tvGenreDetailBook.text = book.genre
+            binding.tvTitleBook.text = book.title
+            binding.tvAuthorBook.text = book.author
+            binding.tvDescriptionBook.text = book.description
+            binding.tvGenreBook.text = book.genre
+            binding.tvCountBook.text = book.count.toString()
+
+            binding.imageViewFavorite.setOnClickListener {
+                saveFavorite(book)
+            }
         }
+    }
+
+    private fun saveFavorite(book: Book) {
+        val favorite = Favorite(
+            textBooks = book.textBooks,
+            title = book.title,
+            author = book.author,
+            genre = book.genre,
+            description = book.description,
+            count = book.count
+        )
+
+        val call = apiService.saveFavorite(favorite)
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(context, "Добавлено в закладки", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Не добавлено в закладки", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(context, "An error occurred: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onDestroyView() {
@@ -43,5 +87,9 @@ class DetailBookFragment : Fragment() {
 
     companion object {
         private const val FRAGMENT_ERROR = "DetailBookFragment is null"
+
+        fun newInstance(): Fragment {
+            return DetailBookFragment()
+        }
     }
 }
