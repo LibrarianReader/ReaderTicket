@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.andzhaev.readerticket.R
 import com.andzhaev.readerticket.data.network.ApiFactory
@@ -24,6 +25,10 @@ class CreateTalonFragment : Fragment() {
     private val binding: FragmentCreateTalonBinding
         get() = _binding ?: throw RuntimeException(FRAGMENT_ERROR)
 
+    private lateinit var dateArray: Array<String>
+    private var selectedDate = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,9 +42,14 @@ class CreateTalonFragment : Fragment() {
 
         val bookTitle = arguments?.getString("bookTitle") ?: "Убить пересмешника"
         val bookAuthor = arguments?.getString("bookAuthor") ?: "Харпер Ли"
-        val bookGenre = arguments?.getString("bookGenre")  ?: "Роман"
+        val bookGenre = arguments?.getString("bookGenre") ?: "Роман"
 
-
+        val countBooksAdapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.date_talon,
+            android.R.layout.simple_dropdown_item_1line
+        )
+        binding.etDateTalon.setAdapter(countBooksAdapter)
 
         binding.btRegLibrary.setOnClickListener {
             val number = (100_000..999_999).random().toLong()

@@ -43,6 +43,7 @@ class FavoriteBooksFragment : Fragment() {
         binding.rvLike.layoutManager = LinearLayoutManager(context)
         binding.rvLike.adapter = FavoriteAdapter(emptyList())
 
+
         fetchFavorites()
     }
 

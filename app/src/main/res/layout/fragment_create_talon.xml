@@ -21,26 +21,30 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_date_talon"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="4dp"
+        android:fontFamily="@font/alata"
+        app:shapeAppearanceOverlay="@style/RoundedCorners"
+        android:hint="Количество дней"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleTalon"
-        app:startIconDrawable="@drawable/baseline_date_range_24">
+        app:layout_constraintTop_toBottomOf="@id/tvTitleTalon">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
             android:id="@+id/et_date_talon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:fontFamily="@font/alata"
-            android:hint="Дата"
-            android:inputType="textCapWords" />
+            android:inputType="none"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="7 дней" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

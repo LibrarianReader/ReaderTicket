@@ -52,6 +52,43 @@ class DetailBookFragment : Fragment() {
                 saveFavorite(book)
             }
         }
+        binding.imageViewShare.setOnClickListener {
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, "Здесь ваш текст для поделиться: ${binding.tvTitleBook.text}, ${ binding.tvAuthorBook.text}, ${ binding.tvDescriptionBook.text}, ${binding.tvGenreBook.text}, ${ binding.tvCountBook.text}")
+            }
+            val chooser = Intent.createChooser(shareIntent, "Поделиться через")
+            if (shareIntent.resolveActivity(requireContext().packageManager) != null) {
+                startActivity(chooser)
+            } else {
+                Toast.makeText(context, "Нет приложений для поделиться", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.btBronBook.setOnClickListener {
+            // Создание фрагмента CreateTalonFragment
+            val bundle = Bundle().apply {
+                putString("bookTitle", binding.tvTitleBook.text.toString())
+                putString("bookAuthor", binding.tvAuthorBook.text.toString())
+                putString("bookGenre", binding.tvGenreBook.text.toString())
+            }
+
+            val createTalonFragment = CreateTalonFragment().apply {
+                arguments = bundle
+            }
+
+            requireActivity().supportFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left,
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
+                .replace(R.id.main_container, createTalonFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 
     private fun saveFavorite(book: Book) {
